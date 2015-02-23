@@ -34,15 +34,18 @@ Type: `object` or `boolean`
 
 Please check the available options at http://git-scm.com/docs/git-describe.
 
-*NOTE*: if an option flag takes no value and the passed value is truthy, it will pass the flag only. If it's falsy the flag will not be passed.
-
-#### Additional options:
+Plus:
+##### Additional options:
 
 `checkFirstCommit`: if this value is truthy, an empty string will be returned if
+
 1. there is no tags found
+
 2. there is at least one commit
 
-If it's `true`, it will suppress long format, only showing the closest tag in refs/tags namespace and will return an empty string if there is any commit (same as `{ tags: true, abbrev: 0, checkFirstCommit: true }`).
+*NOTE*: if a flag takes no value and the passed `options.value` is truthy, it will generate the flag only without any value. If it's falsy the flag will not be included.
+
+If it's a `true`, it will suppress long format, only showing the closest tag in refs/tags namespace and will return an empty string if there is no tags but more than one commit (same as `{ tags: true, abbrev: 0, checkFirstCommit: true }`).
 
 ### callback(err, tag)
 
