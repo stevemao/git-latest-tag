@@ -1,6 +1,6 @@
 {
   "name": "git-latest-tag",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Get the most recent git tag of your repository using git-describe(1)",
   "homepage": "https://github.com/stevemao/git-latest-tag",
   "author": {
