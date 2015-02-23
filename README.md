@@ -28,7 +28,7 @@ getLatestTag(options, function(err, tag) {
 
 Returns a generated git command.
 
-### Options
+#### Options
 
 Type: `object` or `boolean`
 
@@ -47,7 +47,7 @@ Plus:
 
 If it's a `true`, it will suppress long format, only showing the closest tag in refs/tags namespace and will return an empty string if there is no tags but more than one commit (same as `{ tags: true, abbrev: 0, checkFirstCommit: true }`).
 
-### callback(err, tag)
+#### callback(err, tag)
 
 
 ## License
