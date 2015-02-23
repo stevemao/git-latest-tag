@@ -52,8 +52,8 @@ function getLatestTag(opts, cb) {
   }
   else {
     opts = opts || {};
-    cb = cb || function() {};
   }
+  cb = cb || function() {};
 
   var cmd = 'git describe';
   _.forOwn(opts, function(val, opt) {
