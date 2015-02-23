@@ -1,5 +1,5 @@
 'use strict';
-var cp = require('child_process');
+var exec = require('child_process').exec;
 var _ = require('lodash');
 
 var optsNoVal = [
@@ -24,7 +24,7 @@ function checkOptNeedsVal(opt) {
 }
 
 function firstCommit(done) {
-  cp.exec('git log --format="%H" --pretty=oneline --reverse', function(err, stdout, stderr) {
+  exec('git log --format="%H" --pretty=oneline --reverse', function(err, stdout, stderr) {
     if (err) {
       done(err);
     }
@@ -68,7 +68,7 @@ function getLatestTag(opts, cb) {
     }
   });
 
-  cp.exec(cmd, function(err, stdout) {
+  exec(cmd, function(err, stdout) {
     if (err) {
       if (opts.checkFirstCommit) {
         firstCommit(cb);
