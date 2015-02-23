@@ -1,0 +1,30 @@
+{
+  "name": "git-latest-tag",
+  "version": "0.0.0",
+  "description": "Get the most recent git tag of your repository using git-describe(1)",
+  "homepage": "https://github.com/stevemao/git-latest-tag",
+  "author": {
+    "name": "Steve Mao",
+    "email": "maochenyan@gmail.com"
+  },
+  "repository": "stevemao/git-latest-tag",
+  "license": "MIT",
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "git-latest-tag",
+    "recent",
+    "tag",
+    "git-describe"
+  ],
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "lodash": "^3.3.0"
+  }
+}
