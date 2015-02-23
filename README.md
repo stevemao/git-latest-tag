@@ -14,6 +14,13 @@ $ npm install --save git-latest-tag
 
 ```js
 var getLatestTag = require('git-latest-tag');
+var options = {
+  all: 'ok',
+  checkFirstCommit: false,
+  contains: true,
+  candidates: 10,
+  'commit-ish': 'HEAD'
+};
 
 getLatestTag(options, function(err, tag) {
   console.log(tag);

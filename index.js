@@ -42,15 +42,13 @@ function getLatestTag(opts, cb) {
   if (typeof opts === 'function') {
     cb = opts;
     opts = {};
-  }
-  else if (opts === true) {
+  } else if (opts === true) {
     opts = {
       tags: true,
       checkFirstCommit: true,
       abbrev: 0
     };
-  }
-  else {
+  } else {
     opts = opts || {};
   }
   cb = cb || function() {};
@@ -60,10 +58,11 @@ function getLatestTag(opts, cb) {
     if (opt === 'checkFirstCommit') {
       return;
     }
-    if (checkOptNeedsVal(opt)) {
+    if (opt === 'commit-ish') {
+      cmd += ' ' + val;
+    } else if (checkOptNeedsVal(opt)) {
       cmd += ' --' + opt + '=' + val;
-    }
-    else if (val) {
+    } else if (val) {
       cmd += ' --' + opt;
     }
   });
