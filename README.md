@@ -51,11 +51,11 @@ getLatestTag(options)
 
 Returns a readable stream.
 
-#### Options
+#### options
 
 Type: `object` or `boolean`
 
-Options will be dash-cased for you.
+All options will be dash-cased for you.
 
 Please check the available options at http://git-scm.com/docs/git-describe.
 
