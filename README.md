@@ -12,6 +12,8 @@ $ npm install --save git-latest-tag
 
 ## Usage
 
+### Use a callback
+
 ```js
 var getLatestTag = require('git-latest-tag');
 var options = {
@@ -27,12 +29,27 @@ getLatestTag(options, function(err, tag) {
 });
 ```
 
+### Use as a readable stream
+
+```js
+var getLatestTag = require('git-latest-tag');
+var options = {
+  all: 'ok',
+  contains: true,
+  candidates: 10,
+  'commit-ish': 'HEAD'
+};
+
+getLatestTag(options)
+  .pipe(...);
+```
+
 
 ## API
 
 ### getLatestTag([options], callback)
 
-Returns a generated git command.
+Returns a readable stream.
 
 #### Options
 

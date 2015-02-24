@@ -19,7 +19,9 @@
     "git-describe"
   ],
   "devDependencies": {
-    "mocha": "*"
+    "mocha": "*",
+    "rewire": "^2.3.1",
+    "through2": "^0.6.3"
   },
   "scripts": {
     "test": "mocha"

@@ -24,13 +24,10 @@ function checkOptNeedsVal(opt) {
   return true;
 }
 
-function getLatestTag(opts, cb) {
+function getCmd(opts) {
   var cmd = 'git describe';
 
-  if (typeof opts === 'function') {
-    cb = opts;
-    opts = {};
-  } else if (opts === true) {
+  if (opts === true) {
     opts = {
       tags: true,
       abbrev: 0
@@ -38,7 +35,6 @@ function getLatestTag(opts, cb) {
   } else {
     opts = opts || {};
   }
-  cb = cb || function() {};
 
   _.forOwn(opts, function(val, opt) {
     opt = decamelize(opt, '-');
@@ -51,15 +47,27 @@ function getLatestTag(opts, cb) {
     }
   });
 
-  exec(cmd, function(err, stdout) {
+  return cmd;
+}
+
+function getLatestTag(opts, cb) {
+  if (typeof opts === 'function') {
+    cb = opts;
+    opts = {};
+  }
+  else {
+    cb = cb || function() {};
+  }
+
+  var cmd = getCmd(opts);
+
+  return exec(cmd, function(err, stdout) {
     if (err) {
       cb(err);
     } else {
       cb(null, String(stdout).trim());
     }
-  });
-
-  return cmd;
+  }).stdout;
 }
 
 module.exports = getLatestTag;
