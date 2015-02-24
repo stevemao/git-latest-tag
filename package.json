@@ -25,6 +25,7 @@
     "test": "mocha"
   },
   "dependencies": {
+    "decamelize": "^1.0.0",
     "lodash": "^3.3.0"
   }
 }

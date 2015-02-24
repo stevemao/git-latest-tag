@@ -34,19 +34,16 @@ it('with a "true"', function() {
   assert.strictEqual(cmd, 'git describe --tags --abbrev=0');
 });
 
-it('shouldn\'t take option.checkFirstCommit into accound', function() {
-  var cmd = gitLatestTag({
-    all: 'ok',
-    checkFirstCommit: false,
-    contains: true,
-    candidates: 10
-  });
-  assert.strictEqual(cmd, 'git describe --all --contains --candidates=10');
-});
-
-it('with option commit-ish', function() {
+it('with an option "commit-ish"', function() {
   var cmd = gitLatestTag({
     'commit-ish': 'HEAD'
   });
   assert.strictEqual(cmd, 'git describe HEAD');
+});
+
+it('with a camelCase option', function() {
+  var cmd = gitLatestTag({
+    'exactMatch': true
+  });
+  assert.strictEqual(cmd, 'git describe --exact-match');
 });

@@ -16,7 +16,6 @@ $ npm install --save git-latest-tag
 var getLatestTag = require('git-latest-tag');
 var options = {
   all: 'ok',
-  checkFirstCommit: false,
   contains: true,
   candidates: 10,
   'commit-ish': 'HEAD'
@@ -39,20 +38,13 @@ Returns a generated git command.
 
 Type: `object` or `boolean`
 
+Options will be dash-cased for you.
+
 Please check the available options at http://git-scm.com/docs/git-describe.
-
-Plus:
-##### Additional options:
-
-`checkFirstCommit`: if this value is truthy, an empty string will be returned if
-
-1. there is no tags found
-
-2. there is at least one commit
 
 *NOTE*: if a flag takes no value and the passed `options.value` is truthy, it will generate the flag only without any value. If it's falsy the flag will not be included.
 
-If it's a `true`, it will suppress long format, only showing the closest tag in refs/tags namespace and will return an empty string if there is no tags but more than one commit (same as `{ tags: true, abbrev: 0, checkFirstCommit: true }`).
+If it's a `true`, it will suppress long format, only showing the closest tag in refs/tags namespace and will return an empty string if there is no tags but more than one commit (same as `{ tags: true, abbrev: 0 }`).
 
 #### callback(err, tag)
 

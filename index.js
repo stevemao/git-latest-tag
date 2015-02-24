@@ -1,5 +1,6 @@
 'use strict';
 var exec = require('child_process').exec;
+var decamelize = require('decamelize');
 var _ = require('lodash');
 
 var optsNoVal = [
@@ -23,29 +24,15 @@ function checkOptNeedsVal(opt) {
   return true;
 }
 
-function firstCommit(done) {
-  exec('git log --format="%H" --pretty=oneline --reverse', function(err, stdout, stderr) {
-    if (err) {
-      done(err);
-    }
-
-    if (stderr || !String(stdout).trim()) {
-      done(stderr);
-    } else {
-      // return empty string for first commit to appear in changelog
-      done(null, '');
-    }
-  });
-}
-
 function getLatestTag(opts, cb) {
+  var cmd = 'git describe';
+
   if (typeof opts === 'function') {
     cb = opts;
     opts = {};
   } else if (opts === true) {
     opts = {
       tags: true,
-      checkFirstCommit: true,
       abbrev: 0
     };
   } else {
@@ -53,12 +40,9 @@ function getLatestTag(opts, cb) {
   }
   cb = cb || function() {};
 
-  var cmd = 'git describe';
   _.forOwn(opts, function(val, opt) {
-    if (opt === 'checkFirstCommit') {
-      return;
-    }
-    if (opt === 'commit-ish') {
+    opt = decamelize(opt, '-');
+    if (opt === 'commitish' || opt === 'commit-ish') {
       cmd += ' ' + val;
     } else if (checkOptNeedsVal(opt)) {
       cmd += ' --' + opt + '=' + val;
@@ -69,11 +53,7 @@ function getLatestTag(opts, cb) {
 
   exec(cmd, function(err, stdout) {
     if (err) {
-      if (opts.checkFirstCommit) {
-        firstCommit(cb);
-      } else {
-        cb(err);
-      }
+      cb(err);
     } else {
       cb(null, String(stdout).trim());
     }
