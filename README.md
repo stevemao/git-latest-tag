@@ -47,7 +47,7 @@ getLatestTag(options)
 
 ## API
 
-### getLatestTag([options], callback)
+### getLatestTag([options], [callback])
 
 Returns a readable stream.
 
