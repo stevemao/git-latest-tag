@@ -71,11 +71,11 @@ If it's a `true`, it will suppress long format, only showing the closest tag in 
 MIT © [Steve Mao](https://github.com/stevemao)
 
 
-[npm-url]: https://npmjs.org/package/git-latest-tag
 [npm-image]: https://badge.fury.io/js/git-latest-tag.svg
-[travis-url]: https://travis-ci.org/stevemao/git-latest-tag
+[npm-url]: https://npmjs.org/package/git-latest-tag
 [travis-image]: https://travis-ci.org/stevemao/git-latest-tag.svg?branch=master
-[daviddm-url]: https://david-dm.org/stevemao/git-latest-tag
+[travis-url]: https://travis-ci.org/stevemao/git-latest-tag
 [daviddm-image]: https://david-dm.org/stevemao/git-latest-tag.svg?theme=shields.io
-[coverall-url]: https://coveralls.io/r/stevemao/git-latest-tag
+[daviddm-url]: https://david-dm.org/stevemao/git-latest-tag
 [coverall-image]: https://coveralls.io/repos/stevemao/git-latest-tag/badge.svg
+[coverall-url]: https://coveralls.io/r/stevemao/git-latest-tag
