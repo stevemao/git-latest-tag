@@ -1,4 +1,4 @@
-#  [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-url]][daviddm-image]
+#  [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-url]][daviddm-image] [![Coverage Status][coverall-url]][coverall-image]
 
 > Get the most recent git tag of your repository using git-describe(1)
 
@@ -77,3 +77,5 @@ MIT © [Steve Mao](https://github.com/stevemao)
 [travis-image]: https://travis-ci.org/stevemao/git-latest-tag.svg?branch=master
 [daviddm-url]: https://david-dm.org/stevemao/git-latest-tag.svg?theme=shields.io
 [daviddm-image]: https://david-dm.org/stevemao/git-latest-tag
+[coverall-url]: https://coveralls.io/r/stevemao/git-latest-tag
+[coverall-image]: https://coveralls.io/repos/stevemao/git-latest-tag/badge.svg
