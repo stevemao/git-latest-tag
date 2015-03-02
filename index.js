@@ -54,8 +54,7 @@ function getLatestTag(opts, cb) {
   if (typeof opts === 'function') {
     cb = opts;
     opts = {};
-  }
-  else {
+  } else {
     cb = cb || function() {};
   }
 
