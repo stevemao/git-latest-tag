@@ -16,7 +16,8 @@
     "git-latest-tag",
     "recent",
     "tag",
-    "git-describe"
+    "git-describe",
+    "git"
   ],
   "devDependencies": {
     "coveralls": "^2.11.2",
