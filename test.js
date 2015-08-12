@@ -1,11 +1,13 @@
 /*global it */
 'use strict';
-var assert = require('assert');
-var through = require('through2');
-var rewire = require('rewire');
-var gitLatestTag = rewire('./');
+var assert	= require('assert');
+var through	= require('through2');
+var rewire	= require('rewire');
 
-var getCmd = gitLatestTag.__get__('getCmd');
+var gitLatestTagModule	= rewire('./');
+var getCmd		= gitLatestTagModule.__get__('getCmd');
+var gitLatestTag	= gitLatestTagModule.getLatestTag;
+var gitLatestTagSync	= gitLatestTagModule.getLatestTagSync;
 
 it('without options', function() {
   var cmd = getCmd();
@@ -67,13 +69,28 @@ it('should callback with options', function(done) {
   });
 });
 
-it('should callback without options', function(done) {
+it('should\'t work without options', function(done) {
   gitLatestTag(function(err, tag) {
-    if (err) {
       assert(err);
       return done();
-    }
-    assert.equal(tag.indexOf('v'), 0);
-    done();
   });
+});
+
+it('should work syncronously with true flag', function() {
+  var tag = gitLatestTagSync(true);
+  assert.equal(tag.indexOf('v'), 0);
+});
+
+it('should work syncronously with custom repo path', function() {
+  var tag = gitLatestTagSync({abbrev: 0, tags: true, repoPath: "."});
+  assert.equal(tag.indexOf('v'), 0);
+});
+
+it('shouldn\'t work syncronously with wrong custom repo path', function() {
+  assert.throws(
+    function() {
+      var tag = gitLatestTagSync({abbrev: 0, tags: true, repoPath: "./somewhere"});
+    },
+    Error
+  );
 });
