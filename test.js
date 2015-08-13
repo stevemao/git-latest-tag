@@ -4,10 +4,10 @@ var assert	= require('assert');
 var through	= require('through2');
 var rewire	= require('rewire');
 
-var gitLatestTagModule	= rewire('./');
-var getCmd		= gitLatestTagModule.__get__('getCmd');
-var gitLatestTag	= gitLatestTagModule.getLatestTag;
-var gitLatestTagSync	= gitLatestTagModule.getLatestTagSync;
+var gitLatestTag	= rewire('./');
+var getCmd		= gitLatestTag.__get__('getCmd');
+var gitLatestTag	= gitLatestTag;
+var gitLatestTagSync	= gitLatestTag.sync;
 
 it('without options', function() {
   var cmd = getCmd();
