@@ -13,7 +13,7 @@ $ npm install --save git-latest-tag
 ### Use a callback
 
 ```js
-var getLatestTag = require('git-latest-tag').getLatestTag;
+var getLatestTag = require('git-latest-tag');
 var options = {
   all: 'ok',
   contains: true,
@@ -30,7 +30,7 @@ getLatestTag(options, function(err, tag) {
 ### Use as a readable stream
 
 ```js
-var getLatestTag = require('git-latest-tag').getLatestTag;
+var getLatestTag = require('git-latest-tag');
 var options = {
   all: 'ok',
   contains: true,
@@ -45,7 +45,7 @@ getLatestTag(options)
 ### Use it synchronously
 
 ```js
-var getLatestTagSync = require('git-latest-tag').getLatestTagSync;
+var getLatestTagSync = require('git-latest-tag').sync;
 var options = {
   all: 'ok',
   contains: true,

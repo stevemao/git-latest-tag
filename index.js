@@ -1,6 +1,6 @@
 'use strict';
 var exec = require('child_process').exec;
-var execSync = require('child_process').execSync;
+var execSync = require('runsync').exec;
 var decamelize = require('decamelize');
 var _ = require('lodash');
 
@@ -94,4 +94,5 @@ function getLatestTagSync(opts) {
   return String(stdout).trim();
 }
 
-module.exports = { getLatestTag: getLatestTag, getLatestTagSync: getLatestTagSync };
+getLatestTag.sync = getLatestTagSync;
+module.exports = getLatestTag;
