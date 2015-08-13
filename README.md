@@ -2,11 +2,13 @@
 
 > Get the most recent git tag of your repository using git-describe(1)
 
+
 ## Install
 
 ```sh
 $ npm install --save git-latest-tag
 ```
+
 
 ## Usage
 
@@ -42,21 +44,6 @@ getLatestTag(options)
   .pipe(...);
 ```
 
-### Use it synchronously
-
-```js
-var getLatestTagSync = require('git-latest-tag').sync;
-var options = {
-  all: 'ok',
-  contains: true,
-  candidates: 10,
-  'commit-ish': 'HEAD'
-};
-
-var tag = getLatestTagSync(options);
-console.log(tag);
-//=> latestTag
-```
 
 ## API
 
@@ -72,26 +59,17 @@ All options will be dash-cased for you.
 
 Please check the available options at http://git-scm.com/docs/git-describe.
 
-You can also define a specific Git repo other than the current path through the 'repoPath' option:
-
-```js
-// Options to get latest tag from current branch of a given repo
-var options = {
-  tags: true,
-  abbrev: 0,
-  repoPath: '/path/to/repo'
-};
-```
-
 *NOTE*: if a flag takes no value and the passed `options.value` is truthy, it will generate the flag only without any value. If it's falsy the flag will not be included.
 
 If it's a `true`, it will suppress long format, only showing the closest tag in refs/tags namespace and will return an empty string if there is no tags but more than one commit (same as `{ tags: true, abbrev: 0 }`).
 
 #### callback(err, tag)
 
+
 ## License
 
 MIT © [Steve Mao](https://github.com/stevemao)
+
 
 [npm-image]: https://badge.fury.io/js/git-latest-tag.svg
 [npm-url]: https://npmjs.org/package/git-latest-tag
