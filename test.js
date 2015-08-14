@@ -76,6 +76,13 @@ it('should\'t work without options', function(done) {
   });
 });
 
+it('should\'t work with invalid custom repo path', function(done) {
+  gitLatestTag({repoPath: './somewhere'}, function(err, tag) {
+      assert(err);
+      return done();
+  });
+});
+
 it('should work syncronously with true flag', function() {
   var tag = gitLatestTagSync(true);
   assert.equal(tag.indexOf('v'), 0);
@@ -86,10 +93,10 @@ it('should work syncronously with custom repo path', function() {
   assert.equal(tag.indexOf('v'), 0);
 });
 
-it('shouldn\'t work syncronously with wrong custom repo path', function() {
+it('shouldn\'t work syncronously with invalid custom repo path', function() {
   assert.throws(
     function() {
-      var tag = gitLatestTagSync({abbrev: 0, tags: true, repoPath: "./somewhere"});
+      var tag = gitLatestTagSync({abbrev: 0, tags: true, repoPath: './somewhere'});
     },
     Error
   );

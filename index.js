@@ -1,6 +1,6 @@
 'use strict';
 var exec = require('child_process').exec;
-var execSync = require('runsync').exec;
+var execSync = require('child_process').execSync || require('runsync').exec;
 var decamelize = require('decamelize');
 var _ = require('lodash');
 
