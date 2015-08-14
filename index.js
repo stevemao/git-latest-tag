@@ -1,5 +1,6 @@
 'use strict';
 var exec = require('child_process').exec;
+var execSync = require('child_process').execSync || require('runsync').exec;
 var decamelize = require('decamelize');
 var _ = require('lodash');
 
@@ -50,6 +51,18 @@ function getCmd(opts) {
   return cmd;
 }
 
+function getExecOptions(opts) {
+
+  var execOpts = {};
+
+  if (opts instanceof Object && "repoPath" in opts) {
+    execOpts.cwd = opts.repoPath;
+    delete opts.repoPath;
+  }
+
+  return execOpts;
+}
+
 function getLatestTag(opts, cb) {
   if (typeof opts === 'function') {
     cb = opts;
@@ -58,9 +71,10 @@ function getLatestTag(opts, cb) {
     cb = cb || function() {};
   }
 
+  var execOpts = getExecOptions(opts);
   var cmd = getCmd(opts);
 
-  return exec(cmd, function(err, stdout) {
+  return exec(cmd, execOpts, function(err, stdout) {
     if (err) {
       cb(err);
     } else {
@@ -69,4 +83,16 @@ function getLatestTag(opts, cb) {
   }).stdout;
 }
 
+function getLatestTagSync(opts) {
+
+  if(opts === null) opts = {};
+
+  var execOpts = getExecOptions(opts);
+  var cmd = getCmd(opts);
+  var stdout = execSync(cmd, execOpts);
+
+  return String(stdout).trim();
+}
+
+getLatestTag.sync = getLatestTagSync;
 module.exports = getLatestTag;
