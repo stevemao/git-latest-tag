@@ -33,6 +33,6 @@
   "dependencies": {
     "decamelize": "^1.0.0",
     "lodash": "^3.3.1",
-    "runsync": "^0.1.8"
+    "sync-exec": "^0.6.1"
   }
 }

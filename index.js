@@ -1,6 +1,6 @@
 'use strict';
 var exec = require('child_process').exec;
-var execSync = require('runsync').exec;
+var execSync = require('sync-exec');
 var decamelize = require('decamelize');
 var _ = require('lodash');
 
@@ -89,9 +89,12 @@ function getLatestTagSync(opts) {
 
   var execOpts = getExecOptions(opts);
   var cmd = getCmd(opts);
-  var stdout = execSync(cmd, execOpts);
+  var res = execSync(cmd, execOpts);
 
-  return String(stdout).trim();
+  if(res.status !== 0) {
+    throw new Error(String(res.stderr).trim());
+  }
+  return String(res.stdout).trim();
 }
 
 getLatestTag.sync = getLatestTagSync;
