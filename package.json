@@ -28,7 +28,7 @@
   },
   "scripts": {
     "test": "mocha",
-    "coverage": "istanbul cover _mocha -- -R spec && rm -rf ./coverage"
+    "coverage": "istanbul cover -x test.js _mocha -- -R spec && rm -rf ./coverage"
   },
   "dependencies": {
     "decamelize": "^1.0.0",
